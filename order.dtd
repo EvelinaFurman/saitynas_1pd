@@ -1,0 +1,15 @@
+<!ELEMENT order (customer, invoiceNumber, orderDate, deliveryDate, status, items)>
+        <!ELEMENT customer (name, address, phoneNumber, emailAddress)>
+        <!ELEMENT name (#PCDATA)>
+        <!ELEMENT address (#PCDATA)>
+        <!ELEMENT phoneNumber (#PCDATA)>
+        <!ELEMENT emailAddress (#PCDATA)>
+        <!ELEMENT invoiceNumber (#PCDATA)>
+        <!ELEMENT orderDate (#PCDATA)>
+        <!ELEMENT deliveryDate (#PCDATA)>
+        <!ELEMENT status (#PCDATA)>
+        <!ELEMENT items (item+)>
+        <!ELEMENT item (product, quantity, price)>
+        <!ELEMENT product (#PCDATA)>
+        <!ELEMENT quantity (#PCDATA)>
+        <!ELEMENT price (#PCDATA)>

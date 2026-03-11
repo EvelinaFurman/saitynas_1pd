@@ -1,0 +1,6 @@
+lt.viko.eif.efurmanova.spring.app.domain.model
+lt.viko.eif.efurmanova.spring.app.infra
+lt.viko.eif.efurmanova.spring.app.infra.network
+lt.viko.eif.efurmanova.spring.app.infra.xml
+lt.viko.eif.efurmanova.spring.app.repository
+lt.viko.eif.efurmanova.spring.app.service
