@@ -23,8 +23,8 @@ public class Order {
     @OneToOne(cascade = CascadeType.ALL)
     private Customer customer;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "order_id")
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+//    @JoinColumn(name = "order_id")
     @XmlElementWrapper(name = "items")
     @XmlElement(name = "item")
     private List<Item> items = new ArrayList<>();

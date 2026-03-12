@@ -5,12 +5,12 @@ import lt.viko.eif.efurmanova.spring.app.domain.model.Order;
 import org.springframework.stereotype.Service;
 
 @Service
-public class InvoiceService {
+public class InvoiceService implements InvoiceGenerator {
 
     public InvoiceService() {
     }
-
-    public Invoice generateInvoice(Order order) {
+@Override
+    public Invoice generate(Order order) {
         return new Invoice(
                 order.getId(),
                 order.getTotalAmount(),
@@ -18,4 +18,5 @@ public class InvoiceService {
                 order.getCustomer()
         );
     }
+
 }

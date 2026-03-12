@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 public class InvoiceServiceTest {
 
     @Mock
-    private InvoiceService invoiceService;
+    private InvoiceGenerator invoiceGenerator;
 
     @Test
     public void shouldGenerateInvoiceFromOrder() {
@@ -36,7 +36,7 @@ public class InvoiceServiceTest {
         double expectedTotal = order.getTotalAmount();
 
         //when
-        Invoice invoice = invoiceService.generateInvoice(order);
+        Invoice invoice = invoiceGenerator.generate(order);
 
         //then
         assertNotNull(invoice);

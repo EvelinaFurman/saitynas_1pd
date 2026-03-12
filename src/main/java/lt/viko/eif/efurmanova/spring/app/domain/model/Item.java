@@ -21,6 +21,11 @@ public class Item {
     private int quantity;
     private Double price;
 
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    @XmlTransient
+    private Order order;
+
     public Item() {
     }
 
@@ -54,8 +59,12 @@ public class Item {
         this.price = price;
     }
 
-    public Double calculateTotal() {
-        return quantity * price;
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
     }
 
     @Override

@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class XmlTransformerTest {
-    private final XmlTransformer xmlTransformer = new XmlTransformer();
+    private final XmlOrderTransformer xmlTransformer = new XmlOrderTransformer();
     @Test
     public void shouldTransformToPojo(){
         //given

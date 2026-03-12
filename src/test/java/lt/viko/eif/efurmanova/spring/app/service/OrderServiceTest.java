@@ -4,7 +4,8 @@ import lt.viko.eif.efurmanova.spring.app.domain.model.Customer;
 import lt.viko.eif.efurmanova.spring.app.domain.model.Invoice;
 import lt.viko.eif.efurmanova.spring.app.domain.model.Item;
 import lt.viko.eif.efurmanova.spring.app.domain.model.Order;
-import lt.viko.eif.efurmanova.spring.app.infra.xml.XmlTransformer;
+import lt.viko.eif.efurmanova.spring.app.infra.xml.XmlReader;
+import lt.viko.eif.efurmanova.spring.app.infra.xml.XmlWriter;
 import lt.viko.eif.efurmanova.spring.app.repository.OrderRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -63,9 +64,11 @@ class OrderServiceTest {
     @Mock
     private OrderRepository orderRepository;
     @Mock
-    private XmlTransformer transformer;
+    private XmlWriter<Invoice> invoiceXmlConverter;
     @Mock
-    private InvoiceService invoiceService;
+    private XmlReader<Order> orderXmlConverter;
+    @Mock
+    private InvoiceGenerator invoiceGenerator;
     @InjectMocks
     private OrderService orderService;
 
@@ -102,10 +105,10 @@ class OrderServiceTest {
                 )
         );
 
-        when(transformer.transformToPojo(correctXml)).thenReturn(order);
+        when(orderXmlConverter.transformToPojo(correctXml)).thenReturn(order);
         when(orderRepository.save(any(Order.class))).thenReturn(savedOrder);
-        when(invoiceService.generateInvoice(savedOrder)).thenReturn(invoice);
-        when(transformer.transformToXml(invoice)).thenReturn(correctInvoiceXml);
+        when(invoiceGenerator.generate(savedOrder)).thenReturn(invoice);
+        when(invoiceXmlConverter.transformToXml(invoice)).thenReturn(correctInvoiceXml);
 
         //when
         String result = orderService.processOrder(correctXml);
